@@ -1,4 +1,5 @@
 import logging
+import random
 import time
 
 from thingy import Thingy
@@ -127,10 +128,11 @@ class LineItemModel(AlphaModel):
 
 class Report(Model):
 
-    def download(self, retry_count=3, **kwargs):
+    def download(self, retry_count=3, backoff_in_seconds=1, **kwargs):
         while not self.is_ready and retry_count > 0:
             retry_count -= 1
-            time.sleep(1)
+            sleep = (backoff_in_seconds * 2 ** retry_count + random.uniform(0, 1))
+            time.sleep(sleep)
         return self.client.get("report-download", id=self.report_id)
 
     @property
