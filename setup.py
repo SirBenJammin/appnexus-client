@@ -7,16 +7,15 @@ with open("appnexus/__about__.py") as fp:
     exec(fp.read(), None, __about__)
 
 setup(
-    name="AppNexus-client",
+    name="appNexus-client",
     version=__about__["__version__"],
     license="MIT",
-    author="numberly",
-    author_email="alexys@1000mercis.com",
+    author="Ben Michael Hayward",
+    author_email="ben.hayward@kindredgroup.com",
     description="General purpose Python client for the AppNexus API",
-    url="https://github.com/numberly/appnexus-client",
-    download_url="https://github.com/numberly/appnexus-client/tags",
-    platforms="any",
-    packages=["appnexus"],
+    long_description=open("README.md").read(),
+    url="https://github.com/SirBenJammin/appnexus-client",
+    download_url="https://github.com/SirBenJammin/appnexus-client",
     install_requires=["requests>=2.25.0",
                       "Thingy>=0.8.3"],
     classifiers=[
