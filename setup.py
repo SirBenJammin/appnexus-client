@@ -2,7 +2,7 @@ from setuptools import setup
 
 __about__ = {}
 
-with open("yoda/__about__.py") as fp:
+with open("appnexus/__about__.py") as fp:
 
     exec(fp.read(), None, __about__)
 
