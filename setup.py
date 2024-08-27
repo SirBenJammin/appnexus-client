@@ -1,31 +1,18 @@
-import os
-import subprocess
-import sys
-
 from setuptools import setup
 
+__about__ = {}
 
-def get_version():
-    if not os.path.isdir(".git"):
-        sys.stderr.write("This does not appear to be a Git repository.")
-        return ""
-    return subprocess.check_output(["git", "describe", "--tags", "--always"],
-                                   universal_newlines=True)[:-1]
+with open("yoda/__about__.py") as fp:
 
-
-def get_description():
-    with open("README.rst") as file:
-        return file.read()
-
+    exec(fp.read(), None, __about__)
 
 setup(
     name="AppNexus-client",
-    version=get_version(),
+    version=__about__["__version__"],
     license="MIT",
     author="numberly",
     author_email="alexys@1000mercis.com",
     description="General purpose Python client for the AppNexus API",
-    long_description=get_description(),
     url="https://github.com/numberly/appnexus-client",
     download_url="https://github.com/numberly/appnexus-client/tags",
     platforms="any",
