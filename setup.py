@@ -13,7 +13,7 @@ setup(
     author="Ben Michael Hayward",
     author_email="ben.hayward@kindredgroup.com",
     description="General purpose Python client for the AppNexus API",
-    long_description=open("README.md").read(),
+    long_description=open("README.rst").read(),
     url="https://github.com/SirBenJammin/appnexus-client",
     download_url="https://github.com/SirBenJammin/appnexus-client",
     install_requires=["requests>=2.25.0",
