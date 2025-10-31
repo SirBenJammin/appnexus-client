@@ -2,6 +2,7 @@ import functools
 import logging
 import os
 import time
+import json
 
 import requests
 
@@ -89,7 +90,11 @@ class AppNexusClient(object):
             if response.content and content_type == "application/json":
                 response_data = response.json()
                 if "response" in response_data:
-                    response_data = response_data["response"]
+                    try:
+                        response_data = response_data["response"]
+                    except TypeError:
+                        response_data = json.loads(json.loads(response.text))
+                        response_data = response_data["response"]
             elif response.content:
                 return response.content
             else:
